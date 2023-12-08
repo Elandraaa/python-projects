@@ -1,0 +1,72 @@
+# this is a cryptography ripoff and my first actual project in python, do not murder me lmao. I am very inexperienced at the moment, I will comment on this thing later
+
+sentence = "!~?;6 ;2&&%<* <62<86 %?~*6 132?4!* *563!68+6! *2 ;2?!*~*%*6 1 02&;6, *56? 52?6!* <62<86 3%!* {2 *56 !136. - 862 *28!*2@"
+
+decryptedSentence = "since corrupt people unite amongst themselves to constitute a force, then honest people must do the same. - leo tolstoy"
+alphalist = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+cipherlist = ["1", "7", ";", "{", "6", "0", "4", "5", "~", "]", ">", "8", "3", "?", "2", "<", "|", "&", "!", "*", "%", "+", "-", "^", "@", "$"]
+newsentence = sentence
+numberOfAttempts = 0
+
+enter = input("Press 'y' to continue: ")
+while True:
+  if enter == 'y':
+      break
+  else:
+      enter = input("Wrong button! Try again: ")
+      continue
+
+def find(char, cipherlist):
+  for item in cipherlist:
+      if item == char:
+          return True
+  return False
+
+def find2(letter, alphalist):
+  for item in alphalist:
+      if item == letter:
+          return True
+  return False
+
+def isFound(cipherchar):
+  while not find(cipherchar, cipherlist):
+      cipherchar = input("Not a character in the sentence! Try again: ")
+  return cipherchar
+
+def isFound2(letter):
+  while not find2(letter, alphalist):
+      letter = input("Not a letter! Try again: ")
+  return letter
+
+while True:
+  
+  print(newsentence)
+  if newsentence == decryptedSentence and numberOfAttempts <= 20:
+    print("You win!")
+    break
+  elif newsentence == decryptedSentence and numberOfAttempts > 20:
+    print("You may have solved this, but you have not won :(")
+  cipherchar = input("Enter the character you want to replace: ")
+  cipherchar = isFound(cipherchar)
+  letter = input("Type the letter you think belongs to that character: ")
+  letter = isFound2(letter)
+  try:
+      if cipherlist.index(cipherchar) == alphalist.index(letter):
+          print("Your guess is correct!")
+          temp_filler = ""
+          for char in newsentence:
+              if char == cipherchar:
+                  temp_filler = temp_filler + letter
+              else:
+                  temp_filler = temp_filler + char
+          newsentence = temp_filler
+          numberOfAttempts += 1
+          print("You have made " + str(numberOfAttempts) + " attempts so far.")
+      else:
+          print("Your guess is incorrect.")
+          numberOfAttempts += 1
+          print("You have made " + str(numberOfAttempts) + " attempts so far.")
+      
+  except ValueError:
+      continue
