@@ -1,11 +1,17 @@
-# this is a cryptography ripoff and my first actual project in python, do not murder me lmao. I am very inexperienced at the moment, I will comment on this thing later
+# this is a cryptography game and my first actual project in python. 
 
+# encrypted sentence the user must decode
 sentence = "!~?;6 ;2&&%<* <62<86 %?~*6 132?4!* *563!68+6! *2 ;2?!*~*%*6 1 02&;6, *56? 52?6!* <62<86 3%!* {2 *56 !136. - 862 *28!*2@"
 
+# what the sentence actually says
+
 decryptedSentence = "since corrupt people unite amongst themselves to constitute a force, then honest people must do the same. - leo tolstoy"
+
+# a list of the alphabet to be traversed through, and a list of the characters of the cipher to be traversed.
 alphalist = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 cipherlist = ["1", "7", ";", "{", "6", "0", "4", "5", "~", "]", ">", "8", "3", "?", "2", "<", "|", "&", "!", "*", "%", "+", "-", "^", "@", "$"]
+
 newsentence = sentence
 numberOfAttempts = 0
 
